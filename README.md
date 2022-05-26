@@ -1,20 +1,14 @@
 # Synapsis.id-BackEndChallenge
 
-Hello and welcome, this is my under development project of designing a RESTful API for a e-commerce web app using Go Programming Language. * *All of my work here is dedicated to Synapsis.id as a compulsory task/challenge for the Back-End internship program.* *
-.
-.
-.
-.
-   
+Hello and welcome, this is my under development project of designing a RESTful API for a e-commerce web app using Go Programming Language. *All of my work here is dedicated to Synapsis.id as a compulsory task/challenge for the Back-End internship program.*
+
     
 **Project Requirement:** 
 - Compatible IDE 
 - GO Programming Language
 - Go-Swagger
 
-.
-.
- 
+
 **Under Development E-Commerce Web Application and API that in future will have features:**
 - Perform CRUD operation (CREATE, READ, UPDATE, DELETE).
 - User Authentication with JWT (JSON web token) tokens.
@@ -29,3 +23,5 @@ Hello and welcome, this is my under development project of designing a RESTful A
  
  
 ![RESTful API ERD Diagram:](https://user-images.githubusercontent.com/86362361/170528181-84a4c038-4a2e-45f8-afa5-9937477169fb.png)
+
+*note: further development for personal study or public use is still possible and will be updated here.*
