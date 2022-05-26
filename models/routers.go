@@ -57,6 +57,20 @@ var routes = Routes{
 	},
 
 	Route{
+		"ListItem",
+		strings.ToUpper("Get"),
+		"/v1/cart",
+		ListItem,
+	},
+
+	Route{
+		"Payment",
+		strings.ToUpper("Get"),
+		"/v1/checkout",
+		Payment,
+	},
+
+	Route{
 		"ListCategory",
 		strings.ToUpper("Get"),
 		"/v1/categories",

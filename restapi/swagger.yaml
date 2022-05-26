@@ -1,3 +1,4 @@
+---
 swagger: "2.0"
 info:
   description: "Demo Server"
@@ -8,31 +9,75 @@ info:
     email: "hadinaufal26@gmail.com"
 host: "localhost:8080"
 basePath: "/v1"
-consumes: ["application/json"]
-produces: ["application/json"]
-
+consumes:
+- "application/json"
+produces:
+- "application/json"
 paths:
+  /checkout:
+    get:
+      tags:
+      - "payment"
+      summary: "Get the checkout detail from shopping cart"
+      description: "it return the value from price and quantity of items"
+      operationId: "payment"
+      parameters: []
+      responses:
+        "200":
+          description: "Total Prices"
+          schema:
+            $ref: "#/definitions/Payment"
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Categories Not Found"
+        "500":
+          description: "Server Error"
+          schema:
+            type: "string"
+  /cart:
+    get:
+      tags:
+      - "item"
+      summary: "Get selected item"
+      description: "It returns the item that selected by user"
+      operationId: "listItem"
+      parameters: []
+      responses:
+        "200":
+          description: "List of Categories"
+          schema:
+            $ref: "#/definitions/Items"
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Categories Not Found"
+        "500":
+          description: "Server Error"
+          schema:
+            type: "string"
   /categories:
     get:
       tags:
       - "product"
-      summary: 'Get product items for the app'
-      description: 'It returns a list of nested objects which contains all categories of the item'
+      summary: "Get product items for the app"
+      description: "It returns a list of nested objects which contains all categories\
+        \ of the item"
       operationId: "listCategory"
+      parameters: []
       responses:
-        200:
-          description: 'List of Categories'
+        "200":
+          description: "List of Categories"
           schema:
-            $ref: '#/definitions/Categories'
-        400:
-          description: Bad Request
-        404:
-          description: Categories Not Found
-        500:
+            $ref: "#/definitions/Categories"
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Categories Not Found"
+        "500":
+          description: "Server Error"
           schema:
-            type: string
-          description: Server Error    
-
+            type: "string"
   /login:
     post:
       tags:
@@ -47,71 +92,110 @@ paths:
       parameters:
       - in: "body"
         name: "login"
-        required: true
         description: "Login Payload"
+        required: true
         schema:
           $ref: "#/definitions/LoginInfo"
+        x-exportParamName: "Login"
       responses:
-        200:
-          description: Successful login
+        "200":
+          description: "Successful login"
           schema:
-            $ref: '#/definitions/LoginSuccess'
-        400:
-          description: Bad Request
-        404:
+            $ref: "#/definitions/LoginSuccess"
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "User not found"
           schema:
-            type: string
-          description: User not found
-        500:
+            type: "string"
+        "500":
+          description: "Server error"
           schema:
-            type: string
-          description: Server error
-          
+            type: "string"
 definitions:
-
+  Payment:
+    type: "object"
+    properties:
+      totalItem:
+        type: "integer"
+      totalPrice:
+        type: "number"
+    example:
+      totalItem: 0
+      totalPrice: 6.02745618307040320615897144307382404804229736328125
+  Items:
+    type: "object"
+    properties:
+      itmId:
+        type: "integer"
+      itmName:
+        type: "string"
+      itmPrice:
+        type: "number"
+      itemQuantity:
+        type: "integer"
+      itmImage:
+        type: "string"
+    example:
+      itmId: 0
+      itemQuantity: 1
+      itmName: "itmName"
+      itmPrice: 6.02745618307040320615897144307382404804229736328125
+      itmImage: "itmImage"
   Categories:
-    type: array
+    type: "array"
     items:
-      $ref: '#/definitions/Category'
+      $ref: "#/definitions/Category"
   Category:
-    type: object
+    type: "object"
     properties:
       prId:
-        type: integer
+        type: "integer"
       prName:
-        type: string
+        type: "string"
+      prPrice:
+        type: "number"
       prImageUrl:
-        type: string
+        type: "string"
       prIsActive:
-        type: boolean
+        type: "boolean"
       subCategories:
-        type: array
+        type: "array"
         items:
-          $ref: '#/definitions/SubCategory'
+          $ref: "#/definitions/SubCategory"
   SubCategory:
-    type: object
+    type: "object"
     properties:
       prScId:
-        type: integer
+        type: "integer"
       prScName:
-        type: string
+        type: "string"
+      psScPrice:
+        type: "number"
       prScImageUrl:
-        type: string
+        type: "string"
       prScIsActive:
-        type: boolean
-
+        type: "boolean"
   LoginInfo:
-    type: object
-    required: [email,password]
+    type: "object"
+    required:
+    - "email"
+    - "password"
     properties:
       email:
-        type: string
+        type: "string"
       password:
-        type: string
+        type: "string"
+    example:
+      password: "password"
+      email: "email"
   LoginSuccess:
-    type: object
+    type: "object"
     properties:
       success:
-        type: boolean
+        type: "boolean"
       token:
-        type: string
+        type: "string"
+    example:
+      success: true
+      token: "token"
