@@ -24,4 +24,4 @@ Hello and welcome, this is my under development project of designing a RESTful A
  
 ![RESTful API ERD Diagram:](https://user-images.githubusercontent.com/86362361/170528181-84a4c038-4a2e-45f8-afa5-9937477169fb.png)
 
-*note: further development for personal study or public use is still possible and will be updated here.*
+*note: further development for personal study is still possible and will be updated here.*
