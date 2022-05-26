@@ -170,7 +170,7 @@ definitions:
         type: "integer"
       prScName:
         type: "string"
-      psScPrice:
+      prScPrice:
         type: "number"
       prScImageUrl:
         type: "string"
