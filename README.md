@@ -1,13 +1,19 @@
 # Synapsis.id-BackEndChallenge
 
 Hello and welcome, this is my under development project of designing a RESTful API for a e-commerce web app using Go Programming Language. * *All of my work here is dedicated to Synapsis.id as a compulsory task/challenge for the Back-End internship program.* *
- 
- 
- 
-  
+.
+.
+.
+.
    
     
-**Project Requirement:** Compatible IDE, GO Programming Language
+**Project Requirement:** 
+- Compatible IDE 
+- GO Programming Language
+- Go-Swagger
+
+.
+.
  
 **Under Development E-Commerce Web Application and API that in future will have features:**
 - Perform CRUD operation (CREATE, READ, UPDATE, DELETE).
