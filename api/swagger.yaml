@@ -1,0 +1,117 @@
+swagger: "2.0"
+info:
+  description: "Demo Server"
+  version: "1.0.0"
+  title: "Synpasis.id backend challenge"
+  termsOfService: "http://demo.com/demo"
+  contact:
+    email: "hadinaufal26@gmail.com"
+host: "localhost:8080"
+basePath: "/v1"
+consumes: ["application/json"]
+produces: ["application/json"]
+
+paths:
+  /categories:
+    get:
+      tags:
+      - "product"
+      summary: 'Get product items for the app'
+      description: 'It returns a list of nested objects which contains all categories of the item'
+      operationId: "listCategory"
+      responses:
+        200:
+          description: 'List of Categories'
+          schema:
+            $ref: '#/definitions/Categories'
+        400:
+          description: Bad Request
+        404:
+          description: Categories Not Found
+        500:
+          schema:
+            type: string
+          description: Server Error    
+
+  /login:
+    post:
+      tags:
+      - "user"
+      summary: "Return token from auth user"
+      description: "Return token from auth user"
+      operationId: "Login"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "login"
+        required: true
+        description: "Login Payload"
+        schema:
+          $ref: "#/definitions/LoginInfo"
+      responses:
+        200:
+          description: Successful login
+          schema:
+            $ref: '#/definitions/LoginSuccess'
+        400:
+          description: Bad Request
+        404:
+          schema:
+            type: string
+          description: User not found
+        500:
+          schema:
+            type: string
+          description: Server error
+          
+definitions:
+
+  Categories:
+    type: array
+    items:
+      $ref: '#/definitions/Category'
+  Category:
+    type: object
+    properties:
+      prId:
+        type: integer
+      prName:
+        type: string
+      prImageUrl:
+        type: string
+      prIsActive:
+        type: boolean
+      subCategories:
+        type: array
+        items:
+          $ref: '#/definitions/SubCategory'
+  SubCategory:
+    type: object
+    properties:
+      prScId:
+        type: integer
+      prScName:
+        type: string
+      prScImageUrl:
+        type: string
+      prScIsActive:
+        type: boolean
+
+  LoginInfo:
+    type: object
+    required: [email,password]
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+  LoginSuccess:
+    type: object
+    properties:
+      success:
+        type: boolean
+      token:
+        type: string
